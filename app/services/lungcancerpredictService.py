@@ -1,4 +1,5 @@
 from app.model.load import loadlungmodel
+from app.serializers import Lung
 
 class LungCancerPredictService:
     
@@ -8,8 +9,14 @@ class LungCancerPredictService:
         self.convert()
 
     def convert(self):
-        for i in self.request.data:
-            self.dataList.append(self.request.data.get(i))
+        serializer=Lung(data=self.request.data)
+        print(serializer.is_valid())
+        print(serializer.validated_data)
+        if (serializer.is_valid()):          
+          for i in serializer.validated_data:
+            self.dataList.append(serializer.validated_data.get(i))
+        else:
+            raise Exception(str(serializer.errors))
 
     def predict(self):
         try:
