@@ -19,6 +19,23 @@ def loadlungmodel(inp):
   except Exception as e:
     raise Exception(str(e))
 
+def loadbreastmodel(inp):
+  try:
+    os.chdir(settings.BASE_DIR)
+    scaler = "scaler_2.pkl"
+    model = "breast_cancer_model.pkl"
+    scaler=pickle.load(open(scaler,"rb"))
+    user_input = scaler.transform([inp])
+    model=pickle.load(open(model,"rb"))
+    modelPrediction=model.predict(user_input)
+
+    if(modelPrediction == 1):
+      return "Malignant! Your Breast Cancer is"
+    else:
+      return "Benign! Your Breast Cancer is"
+    
+  except Exception as e:
+    raise Exception(str(e))
 
 
 
