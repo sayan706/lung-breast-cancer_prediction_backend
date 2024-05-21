@@ -12,9 +12,9 @@ def loadlungmodel(inp):
     modelPrediction=model.predict(user_input)
 
     if(modelPrediction == 1):
-      return "Yes! You are effected by Lung Cancer"
+      return "You have a high probability of Lung Cancer. Please Consult with the Doctor and Professionals to avoid Risks."
     else:
-      return "No! You are not effected by Lung Cancer"
+      return "There is no such probability of Lung Cancer, for any further confirmation please reach out to Professionals and Doctors. Thank You!"
     
   except Exception as e:
     raise Exception(str(e))
@@ -30,9 +30,9 @@ def loadbreastmodel(inp):
     modelPrediction=model.predict(user_input)
 
     if(modelPrediction == 1):
-      return "Malignant! Your Breast Cancer is"
+      return "You have a high probability of having Malignant Tumor. Please Consult with the Doctor and Professionals to avoid Risks."
     else:
-      return "Benign! Your Breast Cancer is"
+      return "There is no such probability of having Malingnant Tumor, for any further confirmation please reach out to Professionals and Doctors. Thank You!"
     
   except Exception as e:
     raise Exception(str(e))
